@@ -1,0 +1,11 @@
+{
+  "PORT": 5000,
+  "MONGO_DB": "mongodb://localhost/todo",
+  "redis": {
+    "host": "localhost",
+    "port": "6380"
+  },
+  "auth0.domain":       "rohomi97.eu.auth0.com",
+  "auth0.clientID":     "8E1rg0xX8k5SLytPvhz7k2EgHhdJ9HpO",
+  "auth0.clientSecret": "bbCVFPkcsSvUeyEQWlfBPQGdzAuPt-F8eq6Q9TucKuwzfn_Ky5fdnm1TQ6OU-9re"
+}

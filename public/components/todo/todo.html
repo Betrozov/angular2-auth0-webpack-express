@@ -1,0 +1,53 @@
+<div class="todo-container">
+  <button class="logout" type="button" (click)="logout()">Logout</button>
+
+  <section id="todoapp">
+    <header id="header">
+      <h1>todos</h1>
+      <input id="new-todo"
+             type="text"
+             placeholder="What needs to be done?"
+             required
+             #newtodo
+             (keyup.enter)="addTodo(newtodo)">
+    </header>
+
+    <section id="main" *ngIf="todoList.length">
+      <input id="toggle-all"
+             type="checkbox"
+             [checked]="allChecked"
+             (click)="markAll(allChecked)">
+
+      <label for="toggle-all">Mark all as complete</label>
+
+      <ul id="todo-list">
+        <li *ngFor="#todo of todoList"
+            [class.completed]="todo.completed"
+            [class.editing]="todo === editedTodo">
+          <div class="view">
+            <input class="toggle"
+                   type="checkbox"
+                   [checked]="todo.completed"
+                   (click)="toggleCompleted(todo)">
+            <label (dblclick)="openEditTodo(todo, todoItemInput)">{{todo.title}}</label>
+            <button class="destroy" (click)="removeTodo(todo)"></button>
+          </div>
+
+          <input class="edit"
+                 #todoItemInput
+                 [(ngModel)]="todo.title"
+                 (keyup.enter)="saveRenameTodo(todo, 'save')"
+                 (keyup.escape)="saveRenameTodo(todo, 'escape')">
+        </li>
+      </ul>
+    </section>
+
+    <footer id="footer" *ngIf="todoList.length">
+      <span id="todo-count">
+        <strong>{{completedCount}}</strong> item<span *ngIf="completedCount !== 1">s</span> left
+      </span>
+
+      <button id="clear-completed" (click)="removeTodo()" *ngIf="todoList.length - completedCount">Clear completed</button>
+    </footer>
+  </section>
+</div>
