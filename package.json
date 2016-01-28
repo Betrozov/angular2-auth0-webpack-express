@@ -6,9 +6,10 @@
   "homepage": "https://github.com/Betrozov/angular2-webpack",
   "license": "MIT",
   "scripts": {
+    "start": "node app.js",
     "clean": "rimraf node_modules doc typings && npm cache clean",
     "clean-install": "npm run clean && npm install",
-    "clean-start": "npm run clean && npm start",
+    "clean-start": "npm run clean && npm dev",
     "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
     "build": "webpack --progress --profile --colors --display-error-details --display-cached",
     "build:prod": "webpack --progress --profile --colors --display-error-details --display-cached --optimize-occurence-order --optimize-minimize --optimize-dedupe",
@@ -17,7 +18,7 @@
     "webdriver-start": "webdriver-manager start",
     "lint": "tsconfig-lint",
     "docs": "typedoc  --options typedoc.json  src/**/*.ts",
-    "start": "npm run server",
+    "dev": "npm run server",
     "postinstall": "typings install"
   },
   "dependencies": {
