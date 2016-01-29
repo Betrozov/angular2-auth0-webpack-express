@@ -2,11 +2,9 @@
  * Providers provided by Angular
  */
 import {bootstrap} from 'angular2/platform/browser';
-import {provide, OnInit} from 'angular2/core';
-import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
+import {provide} from 'angular2/core';
 import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {HTTP_PROVIDERS, Http} from 'angular2/http';
-import {AuthHttp, AuthConfig} from 'angular2-jwt';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
 /*
  * App Component
@@ -18,20 +16,9 @@ import {App} from './components/components';
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-export function main() {
-  return bootstrap(App, [
-    // These are dependencies of our App
-    HTTP_PROVIDERS,
-    ROUTER_PROVIDERS,
-    ELEMENT_PROBE_PROVIDERS,
-    provide(AuthHttp, {
-      useFactory: (http) => {
-        return new AuthHttp(new AuthConfig(), http);
-      },
-      deps: [Http]
-    }),
-    provide(LocationStrategy, {useClass: HashLocationStrategy})
-  ]);
-}
-
-document.addEventListener('DOMContentLoaded', main);
+bootstrap(App, [
+  // These are dependencies of our App
+  HTTP_PROVIDERS,
+  ROUTER_PROVIDERS,
+  provide(LocationStrategy, {useClass: HashLocationStrategy})
+]);

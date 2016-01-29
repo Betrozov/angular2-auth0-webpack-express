@@ -1,6 +1,4 @@
 import {Component, OnInit} from 'angular2/core';
-import {RouteConfig, APP_BASE_HREF, ROUTER_PROVIDERS, ROUTER_DIRECTIVES, CanActivate} from 'angular2/router';
-import {AuthHttp, tokenNotExpired, JwtHelper} from 'angular2-jwt';
 
 @Component({
   selector: 'login',

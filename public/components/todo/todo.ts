@@ -1,24 +1,22 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, View, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Http} from 'angular2/http';
 import {contentHeaders} from '../../common/headers';
-
-interface TodoInterface {
-  _id?: boolean;
-  completed: boolean;
-  title: string;
-}
+import {TodoInterface} from './todo.interface';
 
 let template = require('./todo.html');
 let css = require('./todo.css');
 
 @Component({
-  selector: 'todo',
+  selector: 'todo'
+})
+
+@View({
   template: template,
   styles: [css]
 })
 
-export class TodoComponent {
+export class TodoComponent implements OnInit {
   private http:Http;
   private parentRouter:Router;
   private todoList:TodoInterface[] = [];
@@ -32,7 +30,7 @@ export class TodoComponent {
     this.parentRouter = _parentRouter;
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.getTodoList();
   }
 

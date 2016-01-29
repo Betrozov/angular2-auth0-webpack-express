@@ -11,7 +11,8 @@ export class LoggedInRouterOutlet extends RouterOutlet {
   private parentRouter:Router;
   private http:Http;
 
-  constructor(_elementRef:ElementRef, _loader:DynamicComponentLoader, _parentRouter:Router, @Attribute('name') nameAttr:string, _http:Http) {
+  constructor(_elementRef:ElementRef, _loader:DynamicComponentLoader,
+              _parentRouter:Router, @Attribute('name') nameAttr:string, _http:Http) {
     super(_elementRef, _loader, _parentRouter, nameAttr);
 
     this.parentRouter = _parentRouter;
@@ -27,7 +28,6 @@ export class LoggedInRouterOutlet extends RouterOutlet {
           return cb(null, response.data);
         },
         error => {
-          alert(error);
           console.log(error);
         }
       );
@@ -36,7 +36,6 @@ export class LoggedInRouterOutlet extends RouterOutlet {
   activate(instruction:ComponentInstruction) {
     return this.isLogged((err, data) => {
       if (!data) {
-        console.log(1);
         this.parentRouter.navigateByUrl('/login');
       }
 
